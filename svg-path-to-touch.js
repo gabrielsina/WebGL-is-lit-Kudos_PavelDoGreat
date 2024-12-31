@@ -53,7 +53,7 @@ function emulateTouch(_duration = 1000, _distance = 100) {
             screenX: x,
             screenY: y,
             button: 0,
-            buttons: type === 'mouseup' ? 0 : 1
+            buttons: type === '_syntheticMouseup' ? 0 : 1
         });
         canvas.dispatchEvent(mouseEvent);
     }
@@ -62,7 +62,7 @@ function emulateTouch(_duration = 1000, _distance = 100) {
     let frameCount = 0;
 
     // Dispatch initial mousedown at true center
-    dispatchMouseEvent('mousedown', startX, startY);
+    dispatchMouseEvent('_syntheticMousedown', startX, startY);
 
     // Return a promise that resolves when the animation is complete
     return new Promise((resolve) => {
@@ -79,10 +79,10 @@ function emulateTouch(_duration = 1000, _distance = 100) {
                 const currentY = startY + (endY - startY) * bezierPoint.y;
 
                 // Dispatch mousemove
-                dispatchMouseEvent('mousemove', currentX, currentY);
+                dispatchMouseEvent('_syntheticMousemove', currentX, currentY);
             } else {
                 // End the mouse sequence
-                dispatchMouseEvent('mouseup', endX, endY);
+                dispatchMouseEvent('_syntheticMouseup', endX, endY);
                 clearInterval(interval);
                 resolve(); // Resolve the promise when animation is complete
             }
