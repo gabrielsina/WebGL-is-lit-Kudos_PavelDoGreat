@@ -1,3 +1,5 @@
+## Original project's README below. Kudos to hard work and bright creation from Pavel Dobryakov.
+
 # WebGL Fluid Simulation
 
 [Play here](https://paveldogreat.github.io/WebGL-Fluid-Simulation/)
